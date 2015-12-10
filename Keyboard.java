@@ -6,6 +6,7 @@ package Homework;
 
 import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.event.*;
 import java.awt.FlowLayout;
 
 import javax.swing.JComponent;
@@ -13,7 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-public class Keyboard extends JPanel {
+public class Keyboard extends JPanel implements MouseListener {
 
 	public void paintComponent(Graphics g) { // Võtab akna suuruse ja joonistab
 												// klahvid
@@ -26,7 +27,7 @@ public class Keyboard extends JPanel {
 			g.fill3DRect(x, 0, width / 21, height, true);
 			x = x + width / 21;
 		}
-		int y = width/28;
+		int y = width / 28;
 		g.setColor(Color.BLACK);
 		for (int k = 0; k < 3; k++) {
 			for (int j = 0; j < 7; j++) {
@@ -42,7 +43,31 @@ public class Keyboard extends JPanel {
 
 	}
 
+	public Keyboard() {
+		addMouseListener(this);
+	}
+
+	public void MousePressed(MouseEvent evt) {
+		int pressedX = evt.getX();
+		int pressedY = evt.getY();
+		// Mida siis teeb.
+
+	}
+
+	public void mouseClicked(MouseEvent evt) {
+	}
+
+	public void mouseReleased(MouseEvent evt) {
+	}
+
+	public void mouseEntered(MouseEvent evt) {
+	}
+
+	public void mouseExited(MouseEvent evt) {
+	}
+
 	public static void main(String[] args) {
+
 		JFrame window = new JFrame("Piano Keyboard");
 		Keyboard content = new Keyboard();
 		window.setContentPane(content);

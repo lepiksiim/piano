@@ -1,3 +1,7 @@
+/** This program creates GUI that shows a keyboard of the piano.
+	Size of the window is changeable and therefore the keys do change their size as well.
+	By clicking on the keys different sounds should be heard.
+*/
 package Homework;
 
 import java.awt.Graphics;
@@ -22,15 +26,17 @@ public class Keyboard extends JPanel {
 			g.fill3DRect(x, 0, width / 21, height, true);
 			x = x + width / 21;
 		}
-		int y = 37;
+		int y = width/28;
 		g.setColor(Color.BLACK);
-		for (int j = 0; j < 20; j++) {
-			if (j == 2 || j == 6 || j == 9 || j == 13 || j == 16) {
-				y = y + width / 21;
-				continue;
-			} else {
-				g.fill3DRect(y, 0, width / 40, height / 2, true);
-				y = y + width / 21;
+		for (int k = 0; k < 3; k++) {
+			for (int j = 0; j < 7; j++) {
+				if (j == 2 || j == 6) {
+					y = y + width / 21;
+					continue;
+				} else {
+					g.fill3DRect(y, 0, width / 40, height / 2, true);
+					y = y + width / 21;
+				}
 			}
 		}
 

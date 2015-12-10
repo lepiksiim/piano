@@ -4,25 +4,28 @@
 
 package Homework;
 
-import java.awt.FlowLayout;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
+
 
 public class Piano implements Runnable {
 
 	public void run() {
-		JFrame window = new JFrame();
+		JFrame window = new JFrame("Piano Keyboard");
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		window.setVisible(true);
+		
+		//Kas saab kuidagi kindlaks teha, kui suur on ekraan ja siis selle alusel suurus määrata?
+		
 		window.setSize(1050, 300);
-
+		window.setLocation(190,150);
+		window.setVisible(true);
 		window.setLayout(new FlowLayout());
 
 		// Siia for tsükkel, mis loob klahvinupud
+		
 
 		JButton button = new JButton("Key");
 		button.addMouseListener(new MouseAdapter() {
@@ -34,7 +37,16 @@ public class Piano implements Runnable {
 			}
 		});
 		window.add(button);
+		
 	}
+	
+	public static class DrawKeyboard extends JPanel {
+		   public void paintComponent(Graphics g) {
+		      super.paintComponent(g);
+		      g.setColor(Color.blue);
+		      g.drawRect(0, 0, 50, 300);
+		   }
+		}
 
 	// g.setColor(Color.white); //creates white background
 	// int w = getWidth();
@@ -46,6 +58,7 @@ public class Piano implements Runnable {
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Piano());
+		
 
 	}
 

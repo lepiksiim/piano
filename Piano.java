@@ -4,12 +4,15 @@
 
 package Homework;
 
-import java.awt.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.*; //kontrolli 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.*;
-
+import javax.swing.*; //kontrolli
+import java.awt.Graphics;
+import java.awt.Graphics;
 
 public class Piano implements Runnable {
 
@@ -23,6 +26,8 @@ public class Piano implements Runnable {
 		window.setLocation(190,150);
 		window.setVisible(true);
 		window.setLayout(new FlowLayout());
+		
+		
 
 		// Siia for tsükkel, mis loob klahvinupud
 		
@@ -58,7 +63,7 @@ public class Piano implements Runnable {
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Piano());
-		
+		g.fill3DRect(20,50,20,60,false);
 
 	}
 

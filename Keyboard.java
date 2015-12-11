@@ -17,10 +17,11 @@ import javax.sound.sampled.*;
 import java.util.*;
 import java.math.*;
 
+/** Reads the size of the window and draws a keyboard*/
+
 public class Keyboard extends JPanel implements MouseListener {
 
-	public void paintComponent(Graphics g) { // Reads the size of the window and
-												// draws a keyboard
+	public void paintComponent(Graphics g) { 
 		super.paintComponent(g);
 		int width = getWidth();
 		int height = getHeight();
@@ -45,8 +46,9 @@ public class Keyboard extends JPanel implements MouseListener {
 		}
 
 	}
-
-	public Keyboard() { // adds MouseListener
+/** Adds MouseListener */
+	
+	public Keyboard() { 
 		addMouseListener(this);
 	}
 
@@ -57,23 +59,27 @@ public class Keyboard extends JPanel implements MouseListener {
 	 * StdAudio.SAMPLE_RATE); } return a; }
 	 */
 
-	public void MousePressed(MouseEvent evt) { // Reads the coordinates where on
-												// the panel mouse is pressed
+	/**Reads the coordinates where on the panel mouse is pressed*/
+	
+	public void MousePressed(MouseEvent evt) { 
+		int width = getWidth();
 		int pressedX = evt.getX();
 		int pressedY = evt.getY();
 		int leftX = 0;
-		int rightX = getWidth() / 21;
-		for (int h = 0; h < 22; h++) {
-			if (leftX <= pressedX < rightX) {
+		int rightX = width / 21;
+		for (int h = 0; h < 21; h++) {
+			if (leftX <= pressedX && pressedX < rightX) {
 
 				// Laseb õige sagedusega heli
-				leftX = leftX + getWidth() / 21;
-				rightX = rightX + getWidth() / 21;
+				// Hz = Hz + muutuja 
+			}
+			else {
+				leftX = leftX + width / 21;
+				rightX = rightX + width / 21;
+			
 			}
 
 		}
-
-		// Mida siis teeb.
 
 	}
 
@@ -88,8 +94,9 @@ public class Keyboard extends JPanel implements MouseListener {
 
 	public void mouseExited(MouseEvent evt) {
 	}
-
-	public static void main(String[] args) { // Allows to run as a program
+/**Main method allows to run as a program*/
+	
+	public static void main(String[] args) { 
 
 		/*
 		 * double hz = Double.parseDouble(args[0]); double duration =

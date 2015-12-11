@@ -13,11 +13,14 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import javax.sound.sampled.*;
+import java.util.*;
+import java.math.*;
 
 public class Keyboard extends JPanel implements MouseListener {
 
-	public void paintComponent(Graphics g) { // Võtab akna suuruse ja joonistab
-												// klahvid
+	public void paintComponent(Graphics g) { // Reads the size of the window and
+												// draws a keyboard
 		super.paintComponent(g);
 		int width = getWidth();
 		int height = getHeight();
@@ -43,13 +46,33 @@ public class Keyboard extends JPanel implements MouseListener {
 
 	}
 
-	public Keyboard() {
+	public Keyboard() { // adds MouseListener
 		addMouseListener(this);
 	}
 
-	public void MousePressed(MouseEvent evt) {
+	/*
+	 * public static double[] tone(double hz, double duration){ int N = (int)
+	 * (StdAudio.SAMPLE_RATE * duration); double[] a = new double[N+1]; for (int
+	 * k = 0;k <= N; k++){ a[k] = Math.sin(2 * Math.PI * k * hz /
+	 * StdAudio.SAMPLE_RATE); } return a; }
+	 */
+
+	public void MousePressed(MouseEvent evt) { // Reads the coordinates where on
+												// the panel mouse is pressed
 		int pressedX = evt.getX();
 		int pressedY = evt.getY();
+		int leftX = 0;
+		int rightX = getWidth() / 21;
+		for (int h = 0; h < 22; h++) {
+			if (leftX <= pressedX < rightX) {
+
+				// Laseb õige sagedusega heli
+				leftX = leftX + getWidth() / 21;
+				rightX = rightX + getWidth() / 21;
+			}
+
+		}
+
 		// Mida siis teeb.
 
 	}
@@ -66,7 +89,13 @@ public class Keyboard extends JPanel implements MouseListener {
 	public void mouseExited(MouseEvent evt) {
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) { // Allows to run as a program
+
+		/*
+		 * double hz = Double.parseDouble(args[0]); double duration =
+		 * Double.parseDouble(args[1]); double[] a = tone(hz, duration);
+		 * StdAudio.play(a);
+		 */
 
 		JFrame window = new JFrame("Piano Keyboard");
 		Keyboard content = new Keyboard();

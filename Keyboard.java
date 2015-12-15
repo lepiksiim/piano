@@ -46,7 +46,8 @@ public class Keyboard extends JPanel implements MouseListener {
 		}
 
 	}
-/** Adds MouseListener */
+
+	/** Adds MouseListener */
 	
 	public Keyboard() { 
 		addMouseListener(this);
@@ -60,8 +61,9 @@ public class Keyboard extends JPanel implements MouseListener {
 	 */
 
 	/**Reads the coordinates where on the panel mouse is pressed*/
-	
-	public void MousePressed(MouseEvent evt) { 
+
+	@Override
+	public void mousePressed(MouseEvent evt) { 
 		int width = getWidth();
 		int pressedX = evt.getX();
 		int pressedY = evt.getY();
@@ -70,6 +72,7 @@ public class Keyboard extends JPanel implements MouseListener {
 		for (int h = 0; h < 21; h++) {
 			if (leftX <= pressedX && pressedX < rightX) {
 
+				System.out.println("h=" + h);
 				// Laseb õige sagedusega heli
 				// Hz = Hz + muutuja 
 			}
@@ -81,7 +84,9 @@ public class Keyboard extends JPanel implements MouseListener {
 
 		}
 
+		
 	}
+
 
 	public void mouseClicked(MouseEvent evt) {
 	}
@@ -94,7 +99,8 @@ public class Keyboard extends JPanel implements MouseListener {
 
 	public void mouseExited(MouseEvent evt) {
 	}
-/**Main method allows to run as a program*/
+
+	/**Main method allows to run as a program*/
 	
 	public static void main(String[] args) { 
 
@@ -112,6 +118,6 @@ public class Keyboard extends JPanel implements MouseListener {
 		window.setSize(1050, 300);
 		window.setVisible(true);
 
-	}
+	}	
 
 }
